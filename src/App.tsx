@@ -8,6 +8,7 @@ import img3 from '@/public/imgs/weather.jpeg';
 
 const App: React.FC = () => {
   const a = 1;
+  alert(a);
   return (
     <>
       <Header title="header" />

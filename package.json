@@ -14,11 +14,6 @@
     "lint": "eslint --ext .tsx,.ts,.js src/",
     "prettier": "prettier -c --write \"src/**/*\""
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "npm run lint",
     "**/*.{js,jsx,tsx,ts,less,md,json}": [
