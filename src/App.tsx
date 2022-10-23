@@ -7,8 +7,6 @@ import img2 from '@/public/imgs/乱菊.jpeg';
 import img3 from '@/public/imgs/weather.jpeg';
 
 const App: React.FC = () => {
-  const a = 1;
-  alert(a);
   return (
     <>
       <Header title="header" />
