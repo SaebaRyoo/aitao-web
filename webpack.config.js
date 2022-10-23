@@ -60,13 +60,18 @@ const config = {
         ]
       },
       {
-        test: /\.(svg|png|jpg|jpeg|gif)$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: 'file-loader'
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
         use: [
             {
-                loader: 'file-loader',
+                loader: 'url-loader',
                 options: {
                     // 文件内容的hash,md5生成
-                    name: 'img/[name].[hash:8].[ext]'
+                    name: 'img/[name].[hash:8].[ext]',
+                    limit: 10240
                 }
             }
         ]
@@ -92,18 +97,18 @@ const config = {
       openAnalyzer: false,
     })
   ],
-//   optimization: {
-//     runtimeChunk: 'single',
-//     splitChunks: {
-//       cacheGroups: {
-//         vendor: {
-//           test: /[\\/]node_modules[\\/]/,
-//           name: 'vendors',
-//           chunks: 'all'
-//         }
-//       }
-//     }
-//   },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },
   devServer: {
     'static': {
       directory: './dist'
@@ -119,7 +124,8 @@ const config = {
     ],
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      '@/src': path.resolve(__dirname, 'src')
+      '@/src': path.resolve(__dirname, 'src'),
+      '@/public': path.resolve(__dirname, 'public'),
     }
   }
 };
