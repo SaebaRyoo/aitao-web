@@ -22,7 +22,7 @@ module.exports = {
     "prettier/prettier": "error",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
-    "no-var": 1,
+    "no-var": 2,
     "no-console": 1,
     "consistent-return": 1,
     "default-case": 1,
