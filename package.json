@@ -11,12 +11,17 @@
     "build-prod": "webpack --mode production",
     "test": "jest",
     "start": "webpack serve --hot --mode development",
-    "lint": "eslint --ext .tsx,.ts,.js src/",
+    "lint": "eslint --ext .tsx,.ts,.js",
     "prettier": "prettier -c --write \"src/**/*\""
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "npm run lint",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+    "src/**/*.{js,jsx,ts,tsx}": "npm run lint",
+    "src/**/*.{js,jsx,tsx,ts,less,md,json}": [
       "prettier --write"
     ]
   },
