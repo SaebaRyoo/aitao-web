@@ -5,7 +5,8 @@
     "strict": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
-    "module": "es6",
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
     "moduleResolution": "node",
     "target": "es5",
     "allowJs": true,
@@ -14,6 +15,7 @@
     "paths": {
       "@/src/*": ["src/*"],
       "@/public/*": ["public/*"],
+      "@/config/*": ["config/*"]
     }
   },
   "exclude": ["node_modules", "dist"]
