@@ -110,6 +110,9 @@ const config = {
       directory: './dist',
       publicPath: '/',
     },
+    proxy: {
+      '/api': 'http://127.0.0.1:8001',
+    },
     compress: true,
     port: 8080,
   },

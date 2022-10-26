@@ -1,20 +1,19 @@
 import Header from '@/src/components/header';
 import { sum } from '@/src/utils/sum';
 import React from 'react';
-import img1 from '@/public/imgs/ryo.jpeg';
-import img2 from '@/public/imgs/乱菊.jpeg';
-import img3 from '@/public/imgs/weather.jpeg';
+import { goodsList } from '@/src/service/goods';
 
 const Home: React.FC = () => {
+  const handleClick = async () => {
+    const data = await goodsList({ current: 1, pageSize: 10 });
+    console.log(data);
+  };
   return (
     <div>
       Home
       <Header title="header" />
       <div>Hello william 1 + 2 = {sum(1, 2)}</div>
-      <img src={img1} />
-      <img src={img2} />
-      <img src={img3} />
-      <br />
+      <button onClick={handleClick}>请求数据</button>
       <i className="iconfont icon-goods" style={{ color: '#ff0000' }}></i>
     </div>
   );
