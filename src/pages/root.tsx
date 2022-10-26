@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import routes from '@/config/routes';
+import routes from '@/src/core/routes';
 
 const Loading: React.FC = () => <div>loading.....</div>;
 
-const CreateHasChilrenRoute = (route: any) => {
+const CreateHasChildrenRoute = (route: any) => {
   return (
     <Route key={route.path} path={route.path}>
       <Route
@@ -37,7 +37,7 @@ const CreateNoChildrenRoute = (route: any) => {
 const RouteCreator = (routes: any) => {
   return routes.map((route: any) => {
     if (route.children && !!route.children.length) {
-      return CreateHasChilrenRoute(route);
+      return CreateHasChildrenRoute(route);
     } else {
       return CreateNoChildrenRoute(route);
     }

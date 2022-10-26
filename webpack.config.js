@@ -106,9 +106,10 @@ const config = {
   },
   devServer: {
     historyApiFallback: true,
-    // 'static': {
-    //   directory: './dist'
-    // },
+    static: {
+      directory: './dist',
+      publicPath: '/',
+    },
     compress: true,
     port: 8080,
   },

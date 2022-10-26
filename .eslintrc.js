@@ -27,6 +27,6 @@ module.exports = {
     'no-irregular-whitespace': 0,
     'no-extra-boolean-cast': 0,
     'no-unused-vars': 'off',
-    '@typescript-eslint/indent': ['error', 2], // tab 缩进2空格
+    // '@typescript-eslint/indent': ['error', 2], // tab 缩进2空格
   },
 };
