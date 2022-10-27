@@ -20,6 +20,7 @@ const config = {
     port: 8080,
   },
   devtool: 'eval-source-map',
+  stats: 'errors-warnings',
 };
 
 module.exports = merge(base, config);

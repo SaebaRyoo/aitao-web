@@ -3,6 +3,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -90,6 +91,7 @@ const config = {
       analyzerMode: 'static',
       openAnalyzer: false,
     }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
