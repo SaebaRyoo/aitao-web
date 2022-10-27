@@ -7,10 +7,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "clean": "rm dist/bundle.js",
-    "build-dev": "cross-env REACT_APP_ENV=dev webpack --mode development",
-    "build-prod": "cross-env REACT_APP_ENV=prod webpack --mode production",
+    "build-dev": "cross-env REACT_APP_ENV=dev webpack --config webpack.dev.js --mode development",
+    "build-prod": "cross-env REACT_APP_ENV=prod webpack --config webpack.prod.js --mode production",
     "test": "jest",
-    "start": "cross-env REACT_APP_ENV=dev webpack serve --hot --mode development",
+    "start": "cross-env REACT_APP_ENV=dev webpack serve --config webpack.dev.js --hot --mode development",
     "lint": "eslint --ext .tsx,.ts,.js src/",
     "prettier": "prettier -c --write \"src/**/*\"",
     "prepare": "husky install"
@@ -68,6 +68,7 @@
     "webpack": "^5.74.0",
     "webpack-bundle-analyzer": "^4.6.1",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
   }
 }

@@ -11,8 +11,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    // chunkhash根据入口文件进行依赖解析
-    filename: '[name].[chunkhash:8].js',
+    // filename在不同环境的打包策略不同
   },
   module: {
     rules: [
@@ -92,30 +91,6 @@ const config = {
       openAnalyzer: false,
     }),
   ],
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-  },
-  devServer: {
-    historyApiFallback: true,
-    static: {
-      directory: './dist',
-      publicPath: '/',
-    },
-    proxy: {
-      '/api': 'http://127.0.0.1:8001',
-    },
-    compress: true,
-    port: 8080,
-  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
@@ -126,11 +101,4 @@ const config = {
   },
 };
 
-module.exports = (env, argv) => {
-  if (argv.hot) {
-    // Cannot use 'contenthash' when hot reloading is enabled.
-    config.output.filename = '[name].[hash].js';
-  }
-
-  return config;
-};
+module.exports = config;
