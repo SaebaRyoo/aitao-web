@@ -1,6 +1,7 @@
 .cache/
 coverage/
 dist/
+dll/
 node_modules/
 *.log
 yarn.lock

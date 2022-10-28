@@ -4,3 +4,10 @@ h1 {
   color: white;
   background-color: black;
 }
+
+
+.no-used {
+  font-size: 24px;
+  margin: auto;
+  paint-order: fill;
+}

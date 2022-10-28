@@ -1,12 +1,19 @@
 const { merge } = require('webpack-merge');
 const base = require('./webpack.base');
+// const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
+// const swp = new SpeedMeasureWebpackPlugin()
 
+//before accelerate: dev bundle time - 6643
+//before accelerate: prod bundle time - 12-14s
 const config = {
   output: {
     // Cannot use 'contenthash' when hot reloading is enabled.
     filename: '[name].[fullhash].js',
   },
   plugins: [],
+  // optimization: {
+  //   runtimeChunk: true,
+  // },
   devServer: {
     historyApiFallback: true,
     static: {
@@ -23,6 +30,7 @@ const config = {
   stats: 'errors-warnings',
 };
 
+// module.exports = swp.wrap(merge(base, config));
 module.exports = merge(base, config);
 // module.exports = (env, argv) => {
 //   if (argv.hot) {
