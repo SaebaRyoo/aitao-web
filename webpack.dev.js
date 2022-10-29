@@ -8,17 +8,14 @@ const base = require('./webpack.base');
 const config = {
   output: {
     // Cannot use 'contenthash' when hot reloading is enabled.
-    filename: '[name].[fullhash].js',
+    filename: 'js/[name].[fullhash].js',
   },
   plugins: [],
-  // optimization: {
-  //   runtimeChunk: true,
-  // },
   devServer: {
     historyApiFallback: true,
     static: {
       directory: './dist',
-      publicPath: '/',
+      // publicPath: '/',
     },
     proxy: {
       '/api': 'http://127.0.0.1:8001',

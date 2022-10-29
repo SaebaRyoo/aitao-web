@@ -5,13 +5,11 @@ import { fetchCount } from '@/src/service/api';
 // Define a type for the slice state
 interface CounterState {
   value: number;
-  status: 'idle' | 'loading' | 'failed';
 }
 
 // Define the initial state using that type
 const initialState: CounterState = {
   value: 0,
-  status: 'idle',
 };
 
 export const counterSlice = createSlice({

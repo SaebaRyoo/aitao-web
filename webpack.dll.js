@@ -2,23 +2,24 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.less', '.css'],
+    modules: [__dirname, 'node_modules'],
+  },
   entry: {
     // 制定需要分离的包
-    library: ['react', 'react-dom', 'redux', 'react-redux'],
+    react: ['react', 'react-dom', 'redux', 'react-redux'],
   },
   output: {
     filename: '[name].dll.js',
-    path: path.join(__dirname, 'dll/library'),
+    path: path.join(__dirname, 'dll/'),
     library: '[name]_[fullhash]',
   },
   plugins: [
     new webpack.DllPlugin({
       name: '[name]_[fullhash]',
-      path: path.join(__dirname, 'dll/library', '[name].json'),
+      path: path.join(__dirname, 'dll', 'manifest.json'),
     }),
   ],
-  // resolve: {
-  //   extensions: ['.js', '.jsx', '.json', '.less', '.css'],
-  //   modules: [__dirname, 'node_modules']
-  // },
 };

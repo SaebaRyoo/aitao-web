@@ -8,6 +8,7 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const smp = new SpeedMeasurePlugin();
 
 const config = {
@@ -80,7 +81,7 @@ const config = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[hash:8].[ext].[query]',
+          filename: 'fonts/[hash:8][ext][query]',
         },
         // use: 'file-loader',
       },
@@ -89,7 +90,7 @@ const config = {
         // 使用资源模块
         type: 'asset',
         generator: {
-          filename: 'imgs/[hash:8].[ext].[query]',
+          filename: 'imgs/[hash:8][ext][query]',
         },
         parser: {
           dataUrlCondition: {
@@ -117,7 +118,7 @@ const config = {
     }),
     // css提取
     new MiniCssExtractPlugin({
-      filename: `[name].[contenthash:8].css`,
+      filename: `css/[name].[contenthash:8].css`,
     }),
     // 代码体积分析
     new BundleAnalyzerPlugin({
@@ -126,10 +127,14 @@ const config = {
     }),
     // 控制台信息
     new FriendlyErrorsWebpackPlugin(),
-    new webpack.DllReferencePlugin({
-      // library.json就是对我们要引入包的描述
-      manifest: path.resolve('./dll/library/library.json'),
-    }),
+    // 将预编译的公共库导入到html中
+    // new AddAssetHtmlPlugin({ filepath: require.resolve('./dll/react.dll.js') }),
+    // // webpack4之后dllPlugin对性能的提升就不大了
+    // new webpack.DllReferencePlugin({
+    //   context: __dirname,
+    //   // manifest.json就是对我们要引入包的描述
+    //   manifest: require('./dll/manifest.json'),
+    // }),
 
     // fork 一个进程进行ts类型检查 // 项目的规模越大，提速越明显
     new ForkTsCheckerWebpackPlugin(),
