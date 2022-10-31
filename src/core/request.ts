@@ -29,7 +29,6 @@ const request = (
   instance.interceptors.request.use(
     function (config) {
       // Do something before request is sent
-      console.log(config);
       if (opts.auth) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -53,7 +52,7 @@ const request = (
       // http状态码
       if (response.status !== 200) {
         console.log('网络请求错误');
-        return response;
+        return Promise.reject(response.data);
       }
 
       // 后端返回的状态，表示请求成功
@@ -66,8 +65,11 @@ const request = (
       return response;
     },
     function (error) {
-      // Any status codes that falls outside the range of 2xx cause this function to trigger
-      // Do something with response error
+      if (error.response) {
+        if (error.response.status === 401) {
+          // jumpLogin();
+        }
+      }
       return Promise.reject(error);
     }
   );

@@ -9,7 +9,9 @@ module.exports = {
   },
   entry: {
     // 制定需要分离的包
-    react: ['react', 'react-dom', 'redux', 'react-redux'],
+    react: ['react', 'react-dom'],
+    redux: ['redux', 'react-redux', '@reduxjs/toolkit'],
+    router: ['react-router', 'react-router-dom'],
   },
   output: {
     filename: '[name].dll.js',
